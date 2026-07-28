@@ -1,0 +1,65 @@
+{% load static %}
+<div id="doctor-results">
+<div class="doctors-grid" data-aos="fade-up" data-aos-delay="300">
+
+{% for doctor in doctors %}
+
+<div class="doctor-profile" data-aos="zoom-in" data-aos-delay="{{ forloop.counter }}00">
+
+    <div class="profile-header">
+
+        <div class="doctor-avatar">
+
+            <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" class="img-fluid">
+
+            <div class="status-indicator {{ doctor.status }}"></div>
+
+        </div>
+
+        <div class="doctor-details">
+
+            <h4>{{ doctor.name }}</h4>
+
+            <span class="specialty-tag">{{ doctor.specialty }}</span>
+
+            <div class="experience-info">
+                <i class="bi bi-award"></i>
+                <span>{{ doctor.experience }} years experience</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="rating-section">
+
+        <div class="stars">
+
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+
+        </div>
+
+        <span class="rating-score">{{ doctor.rating }}</span>
+
+        <span class="review-count">({{ doctor.reviews }} reviews)</span>
+
+    </div>
+
+    <div class="action-buttons">
+
+        <a href="#" class="btn-secondary">View Details</a>
+
+        <a href="{% url 'appointment' %}" class="btn-primary">Book Now</a>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+</div>
